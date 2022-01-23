@@ -1,0 +1,22 @@
+{
+  "name": "DKMH VNU find hidden subject code",
+  "description": "An extension to find the hidden subject code on dangkyhoc.vnu.edu.vn",
+  "version": "1.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["*://dangkyhoc.vnu.edu.vn/dang-ky-mon-hoc*"],
+      "css": ["css/styles.css"],
+      "js": ["js/content-script.js"]
+    }
+  ],
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "storage"]
+}
