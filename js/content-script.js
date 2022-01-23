@@ -18,7 +18,7 @@ const config = {
 const chooseSubject = async (num) => {
   try {
     const url = `http://dangkyhoc.vnu.edu.vn/chon-mon-hoc/${num}/1/${
-      document.querySelector("li.select2-highlighted").textContent ===
+      document.querySelector("span.select2-chosen").textContent ===
       "Môn học theo ngành"
         ? "1"
         : "2"
@@ -72,7 +72,7 @@ const checkMatch = async (num, subject, time) => {
   const [newSubject, newTime] = await getRegisteredSubject(subject);
   return (
     `${newSubject}${subject.split(" ").includes("TH") ? " TH" : ""}` ===
-      subject && (time ? newTime === time : true)
+      subject && (time ? newTime === time.toString().replaceAll(" ", "") : true)
   );
 };
 
@@ -215,7 +215,6 @@ document.querySelector("#dm-btn").addEventListener("click", async function () {
       err.textContent = "Không tìm thấy!";
     }
   } catch (error) {
-    running.textContent = "";
-    result.textContent = error.message;
+    document.querySelector("#dm-running").textContent = error.message;
   }
 });
