@@ -17,10 +17,14 @@ const config = {
 
 const chooseSubject = async (num) => {
   try {
-    const res = await fetch(
-      `http://dangkyhoc.vnu.edu.vn/chon-mon-hoc/${num}/1/1`,
-      config
-    );
+    const url = `http://dangkyhoc.vnu.edu.vn/chon-mon-hoc/${num}/1/${
+      document.querySelector("li.select2-highlighted").textContent ===
+      "Môn học theo ngành"
+        ? "1"
+        : "2"
+    }`;
+
+    const res = await fetch(url, config);
     const data = await res.json();
 
     return data;
